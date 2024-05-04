@@ -1,0 +1,74 @@
+tagName: This property returns the tag name of the element. In your case, it’s checking if the tag name of the target element is “LI” or “SPAN”.
+
+classList: This property returns the class name(s) of an element as a DOMTokenList object. This object represents a collection of space-separated tokens. It’s used here to access the classes of the target element.
+
+toggle: This is a method on the DOMTokenList object returned by classList. It adds a class to an element if it does not already have it, and removes it if it does. In your case, it’s toggling the “checked” class on the target element.
+
+parentElement: This property returns the parent element of the specified element in the DOM tree. In your case, it’s getting the parent element of the target element.
+
+remove: This is a method that removes the element on which it’s called from the DOM.
+
+So, in simple terms, the code is doing the following:
+
+If the target element of the event is an “LI” element, it toggles the “checked” class on it.
+If the target element is a “SPAN”, it removes that element’s parent element from the DOM.
+------------------------------------------------
+parentElement: In an HTML document, elements are nested within each other to create the structure of the page. The parentElement is simply the element that directly contains the current element. For example, consider the following HTML:
+
+<div id="parent">
+  <span id="child">Hello, World!</span>
+</div>
+Here, the div is the parent element of the span. If we were to access the parentElement property of the span element in JavaScript, it would return the div element.
+
+classList: This property provides access to the list of classes that are applied to an element. For example, consider an element defined as follows:
+
+<div id="myDiv" class="class1 class2 class3"></div>
+In JavaScript, you could access the classList of this div like so:
+
+var div = document.getElementById("myDiv");
+console.log(div.classList); // Outputs: DOMTokenList ["class1", "class2", "class3"]
+You can then add, remove, or toggle classes on this element. For example:
+
+div.classList.add("class4"); // Adds "class4"
+div.classList.remove("class2"); // Removes "class2"
+div.classList.toggle("class3"); // Toggles "class3"
+After running this code, the class list of the div would be [“class1”, “class3”, “class4”], because “class2” was removed and “class4” was added. If “class3” was already present, the toggle method would remove it; if it wasn’t present, toggle would add it.
+-------------------------------------
+LocalStorage is a type of web storage that allows JavaScript websites and apps to store and access data right in the browser with no expiration time. This means the data stored in the browser will persist even after the browser window has been closed.
+
+Here’s a simple example of how to use localStorage:
+
+// Store data
+localStorage.setItem('key', 'value');
+
+// Get data
+var data = localStorage.getItem('key');
+console.log(data); // Outputs: "value"
+
+// Remove data
+localStorage.removeItem('key');
+
+// Clear all data
+localStorage.clear();
+In the above example:
+
+setItem('key', 'value') is used to store data. It takes two parameters: the key and the value. Both must be strings.
+
+getItem('key') is used to retrieve data. It takes one parameter: the key of the data you want to retrieve.
+
+removeItem('key') is used to remove data. It takes one parameter: the key of the data you want to remove.
+
+clear() is used to clear all data from localStorage. It takes no parameters.
+
+Note: While localStorage is convenient for storing small amounts of data, it is not a substitute for a database. 
+It’s also important to note that data stored in localStorage is 
+specific to the user’s browser.It’s not a good place to store sensitive data, as it can be easily accessed
+ by anyone using the same computer.
+ ----------------------------------------------
+ Web SQL or IndexedDB: These are more complex, but allow for larger amounts of data to be stored and for more complex interactions with the data.
+
+Server-side storage: This could be a traditional SQL database like PostgreSQL or MySQL, a NoSQL database like MongoDB, or a cloud-based solution like AWS DynamoDB or Google Firebase. The benefit of server-side storage is that it can handle very large amounts of data and is not tied to the user’s browser. However, it requires server-side programming and potentially more infrastructure.
+
+Cookies: Cookies can also be used to store data on the client side, but they have a very small limit (4KB). They are primarily used to store small amounts of data, like session tokens.
+
+Remember, each of these options has its own trade-offs and the best one to use depends on your specific needs in terms of data size, security, and how you need to interact with the data.
